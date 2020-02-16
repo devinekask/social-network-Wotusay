@@ -8,6 +8,7 @@ import {autorun} from 'mobx';
 const renderComment = comments => {
   const $list = document.querySelector('.list');
   $list.innerHTML = '';
+  console.log(comments);
   comments.forEach(comment => {
     $list.appendChild(createComment(comment));
   });

@@ -1,5 +1,5 @@
 import Comment from './Comment';
-import {decorate, action, configure} from 'mobx';
+import {decorate, action, configure, observable} from 'mobx';
 configure({enforceActions: 'observed'});
 
 class Store {
@@ -19,6 +19,7 @@ class Store {
 }
 
 decorate(Store, {
+  comments: observable,
   addResponse: action,
   seed: action
 });

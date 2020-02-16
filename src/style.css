@@ -75,6 +75,10 @@ ul {
   margin-right: 1rem;
 }
 
+li {
+  padding-top: 1rem;
+}
+
 .form__input {
   margin-top: 2rem;
   margin-left: -1rem;
@@ -89,4 +93,3 @@ ul {
   padding-bottom: 5px;
   outline: none;
 }
-
