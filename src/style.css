@@ -24,6 +24,7 @@ body {
 
 .container {
   display: grid;
+  grid-template-columns: 56rem;
   justify-content: center;
   align-items: center;
 }
@@ -81,9 +82,11 @@ ul {
   border: none;
   border-top: solid 1px #D9D9D9;
   font-size: 1.6rem;
-  color: #D9D9D9;
+  color: black;
   padding-left: 3rem;
   padding-top: 1rem;
-  width: 63.2vw;
+  width: 33.2vw;
   padding-bottom: 5px;
+  outline: none;
 }
+
