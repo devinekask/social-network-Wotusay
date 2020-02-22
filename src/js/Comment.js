@@ -7,10 +7,10 @@ class Comment {
     this.likes = likes;
     this.picture = picture;
     this.key = key;
-    this.liked = liked
+    this.liked = liked;
   }
   //For the liked picture
-  setCommentLiked(){
+  setCommentLiked() {
     this.liked = true;
   }
 }

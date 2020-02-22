@@ -1,5 +1,5 @@
 import Comment from './Comment';
-import {decorate, action, configure, observable } from 'mobx';
+import {decorate, action, configure, observable} from 'mobx';
 configure({enforceActions: 'observed'});
 
 class Store {
@@ -7,7 +7,7 @@ class Store {
   constructor() {
     this.comments = [];
     this.pictureLiked = false;
-    this.pictureLikes =  200;
+    this.pictureLikes = 200;
   }
 
   seed(data) {
@@ -21,12 +21,12 @@ class Store {
 
   setLiked() {
     this.pictureLiked = true;
-    this.pictureLikes++;
+    this.pictureLikes ++;
   }
 
   setUnLike() {
     this.pictureLiked = false;
-    this.pictureLikes--;
+    this.pictureLikes --;
   }
 }
 
