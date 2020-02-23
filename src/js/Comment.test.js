@@ -23,3 +23,16 @@ test('Comment must have content', () => {
   expect(() => new Comment({picture: {}})).toThrow();
   expect(() => new Comment({content: '', picture: {}})).toThrow();
 });
+
+
+test('Liking and unliking the comment', () => {
+  const c = new Comment(({content: 'test', user: 'test', picture: 1}));
+  expect(c.likes).toBe(0);
+  expect(c.liked).toBe(false);
+  c.setCommentLiked();
+  expect(c.likes).toBe(1);
+  expect(c.liked).toBe(true);
+  c.setCommentUnLike();
+  expect(c.likes).toBe(0);
+  expect(c.liked).toBe(false);
+});

@@ -1,5 +1,5 @@
 import Comment from './Comment';
-import {decorate, action, configure, observable} from 'mobx';
+import {decorate, action, configure, observable, computed} from 'mobx';
 configure({enforceActions: 'observed'});
 
 class Store {
@@ -16,7 +16,7 @@ class Store {
   }
 
   addResponse(content) {
-    this.comments.push(new Comment({content, user: 'DadGammer', likes: 0, picture: 'gameboy', key: 0, liked: false}));
+    this.comments.push(new Comment({content, user: 'DadGamer', likes: 0, picture: 'gameboy', key: 0, liked: false}));
   }
 
   setLiked() {
@@ -28,6 +28,10 @@ class Store {
     this.pictureLiked = false;
     this.pictureLikes --;
   }
+
+  get amountComments() {
+    return this.comments.length;
+  }
 }
 
 decorate(Store, {
@@ -36,7 +40,8 @@ decorate(Store, {
   seed: action,
   setLiked: action,
   pictureLiked: observable,
-  setUnLike: action
+  setUnLike: action,
+  amountComments: computed
 });
 
 export default Store;

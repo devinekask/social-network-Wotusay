@@ -23,13 +23,20 @@ class Comment {
     this.liked = true;
     this.likes ++;
   }
+
+  setCommentUnLike() {
+    this.liked = false;
+    this.likes --;
+  }
 }
 
 decorate(Comment, {
   content: observable,
   likes: observable,
   liked: observable,
-  setLiked: action
+  setCommentLiked: action,
+  setCommentUnLike: action
+
 
 });
 
