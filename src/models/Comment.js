@@ -1,20 +1,21 @@
 import {decorate, observable, action} from 'mobx';
+import { v4 } from "uuid";
 
 class Comment {
-  constructor({content, user, likes = 0, picture, key, liked = false}) {
+  constructor({content, user, likes = 0, picture, liked = false}) {
     this.content = content;
     this.user = user;
     this.likes = likes;
     this.picture = picture;
-    this.key = key;
+    this.key = v4();
     this.liked = liked;
 
     if (!picture) {
-      throw 'You need an picture to comment!';
+      throw new Error('You need an picture to comment!');
     }
 
     if (!content) {
-      throw 'You need content for your comment!';
+      throw new Error('You need content for your comment!');
     }
   }
 

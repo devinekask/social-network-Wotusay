@@ -1,13 +1,19 @@
 import React from 'react';
+import Header from './components/Header';
+import Content from './components/Content';
 
 
-function App() {
+function App({ store}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
-    </div>
+    <>
+
+    <section className='container'>
+      <Header />
+      <Content store={store} />
+
+    </section>
+
+  </>
   );
 }
 
