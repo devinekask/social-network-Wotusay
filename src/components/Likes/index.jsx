@@ -1,12 +1,12 @@
 import React from "react";
 import { useObserver } from "mobx-react-lite";
 import PropTypes from "prop-types";
+import styles from "./Likes.module.css";
 
-
-const Likes = ({ store }) => {
+const Likes = ({ picture }) => {
 
   const handleClickEvent = e => {
-    store.pictureLiked === true ? store.setUnLike() : store.setLiked();
+    picture.pictureLiked === true ? picture.setUnLike() : picture.setLiked();
   };
 
   const likedState = <svg width='16' height='22' viewBox='0 0 16 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -19,11 +19,11 @@ const notLikedState = <svg width='16' height='22' viewBox='0 0 16 22' fill='none
 
   return useObserver(() => (
     <>
-          <div className='likes'>
+          <div className={styles.likes}>
             <button onClick={handleClickEvent}>
-              {store.pictureLiked === true ? likedState : notLikedState}
+              {picture.pictureLiked === true ? likedState : notLikedState}
             </button>
-            <span className='lits'>{store.pictureLikes} lit's</span>
+            <span className={styles.lits}>{picture.pictureLikes} lit's</span>
             <button><svg width='15' height='19' viewBox='0 0 15 19' fill='none' xmlns='http://www.w3.org/2000/svg'>
               <path d='M12.8735 0.067749H2.87354C1.77354 0.067749 0.883535 0.967749 0.883535 2.06775L0.873535 18.0677L7.87354 15.0677L14.8735 18.0677V2.06775C14.8735 0.967749 13.9735 0.067749 12.8735 0.067749ZM12.8735 15.0677L7.87354 12.8877L2.87354 15.0677V2.06775H12.8735V15.0677Z' fill='#3323EE'/>
             </svg>
@@ -34,7 +34,7 @@ const notLikedState = <svg width='16' height='22' viewBox='0 0 16 22' fill='none
 }
 
 Likes.propTypes = {
-  store: PropTypes.object.isRequired
+  picture: PropTypes.object.isRequired
 };
 
  export default Likes;

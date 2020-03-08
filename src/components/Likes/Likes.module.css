@@ -1,0 +1,16 @@
+.likes {
+  margin-bottom: 1rem;
+}
+
+.lits {
+  color: #3323EE;
+  font-size: 1.9rem;
+  margin-right: 39rem;
+  font-weight: bold;
+}
+
+button {
+  background-color: white;
+  border: none;
+  outline: none;
+}

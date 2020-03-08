@@ -1,6 +1,7 @@
 import React from "react";
 import { useObserver } from "mobx-react-lite";
 import PropTypes from "prop-types";
+import styles from "./Comment.module.css";
 
 const Comment = ({ comment }) => {
   const likedStateComment = <svg width='10' height='14' viewBox='0 0 16 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -13,10 +14,8 @@ const Comment = ({ comment }) => {
 const handleClickEventOnComment = comment => {
   comment.liked === true ? comment.setCommentUnLike() : comment.setCommentLiked();
 };
-
-
   return useObserver(() => (
-    <li key={comment.key}> <span className='user'> {comment.user} </span> {comment.content}<button onClick={() => handleClickEventOnComment(comment)}>
+    <li key={comment.key}> <span className={styles.user}> {comment.user.name} </span> {comment.content}<button onClick={() => handleClickEventOnComment(comment)}>
                 {comment.liked === true ? likedStateComment : notLikedStateComment}
               </button> {comment.likes === 0 ? '' : comment.likes} </li>
   ))

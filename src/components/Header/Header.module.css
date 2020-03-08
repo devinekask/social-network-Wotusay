@@ -1,0 +1,14 @@
+.hidden {
+  display: none;
+}
+
+.user__balk {
+  background-color: white;
+  color: #3323EE;
+  padding: 1rem;
+  margin-top: 4rem;
+
+  & span {
+    margin-left: 1rem;
+  }
+}

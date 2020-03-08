@@ -4,11 +4,13 @@ import { v4 } from "uuid";
 class Comment {
   constructor({content, user, likes = 0, picture, liked = false}) {
     this.content = content;
-    this.user = user;
+    this.user= user;
     this.likes = likes;
     this.picture = picture;
     this.key = v4();
     this.liked = liked;
+    this.picture.linkComment(this);
+    this.picture.linkComment(this);
 
     if (!picture) {
       throw new Error('You need an picture to comment!');
@@ -32,13 +34,10 @@ class Comment {
 }
 
 decorate(Comment, {
-  content: observable,
   likes: observable,
   liked: observable,
   setCommentLiked: action,
   setCommentUnLike: action
-
-
 });
 
 export default Comment;
