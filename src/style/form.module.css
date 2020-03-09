@@ -1,0 +1,7 @@
+@value tokens: "./tokens.module.css";
+@value colorWhite,spacingSmall from tokens;
+
+.form {
+  background-color: colorWhite;
+  padding: spacingSmall;
+}

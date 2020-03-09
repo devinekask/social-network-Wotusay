@@ -1,0 +1,14 @@
+
+.back__btn {
+  composes: lits from '../../style/lits.module.css';
+  background-color: transparent;
+  color: white;
+  text-transform: capitalize;
+  padding-top: 2rem;
+  margin-bottom: -2rem;
+  margin-left: -80rem;
+}
+
+.back__btn:hover{
+  text-decoration: underline;
+}

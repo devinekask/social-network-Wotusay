@@ -1,8 +1,11 @@
+@value tokens: "../../style/tokens.module.css";
+@value spacingSmall from tokens;
+
 .user {
   font-weight: bold;
-  margin-right: 1rem;
+  margin-right: spacingSmall;
 }
 
 li {
-  padding-top: 1rem;
+  padding-top: spacingSmall;
 }

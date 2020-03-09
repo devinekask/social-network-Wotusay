@@ -6,15 +6,22 @@ class Store {
   constructor() {
     this.pictures = [];
     this.currentPicture = undefined;
-    this.currrentUser= undefined;
+    this.currentUser= undefined;
+    this.posts = [];
   }
 
   seed(pictures) {
     this.pictures = pictures;
   }
 
-  setCurrrentUser(user) {
-    this.currrentUser = user;
+  profilePost() {
+    this.posts = this.pictures[1] ;
+  }
+
+
+
+  setCurrentUser(user) {
+    this.currentUser = user;
   }
 
   setCurrentPicture(pic) {
@@ -26,10 +33,12 @@ decorate(Store, {
   pictures: observable,
   addResponse: action,
   seed: action,
+  posts:observable,
+  profilePost:action,
   setCurrentPicture:action,
-  setCurrrentUser:action,
+  setCurrentUser:action,
   currentPicture:observable,
-  currrentUser:observable,
+  currentUser:observable,
 });
 
 export default Store;

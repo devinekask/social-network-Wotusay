@@ -6,17 +6,22 @@ import Likes from '../Likes';
 import Comment from '../Comment';
 import Form from '../Form';
 import { useObserver } from 'mobx-react-lite';
+import Back from '../Back';
+
 
 const Detail = () => {
 
   const {uiStore} = useStores();
   const post = uiStore.currentPost;
-  return useObserver ( () => (
+  return useObserver (() => (
     <>
+
+      <Back></Back>
+
     <div className={styles.grid__templ}>
       <div>
         <Header user={post.comments[0].user.name} />
-        <img src={post.pic} alt='gameboy'/>
+        <img width="590" height="499" src={'.'+post.pic} alt={post.name}/>
       </div>
 
       <div className={styles.form}>

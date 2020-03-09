@@ -26,8 +26,9 @@ p2.comments = [
 ];
 
 store.dataStore.seed([p1,p2]);
+store.dataStore.setCurrentUser(u1);
 
-store.dataStore.setCurrrentUser(u1);
+
 
 
 export const storesContext = createContext(store);

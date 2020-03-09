@@ -1,18 +1,20 @@
+@value tokens: "../../style/tokens.module.css";
+@value fontsizeM, spacingSmall,spacingMedium from tokens;
+
 .form {
-  background-color: white;
-  padding: 1rem
+  composes: form from "../../style/form.module.css";
 }
 
 .amount {
-  font-size: 1.5rem;
+  font-size: fontsizeM;
   display: flex;
   justify-content: center;
   margin-top: -2.7rem;
-  margin-bottom: 1rem;
+  margin-bottom: spacingSmall;
 }
 
 .comments__padding {
-  padding-left: 3rem;
+  padding-left: spacingMedium;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
