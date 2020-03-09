@@ -16,7 +16,7 @@ const Form = () => {
     if (content !== "" && dataStore.currentPicture) {
       new Comment({
         content,
-        user: dataStore.currrentUser,
+        user: dataStore.currentUser,
         picture: dataStore.currentPicture
       })
       setContent("");
