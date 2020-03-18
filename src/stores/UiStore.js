@@ -18,5 +18,4 @@ setCurrentUser: action,
 currentUser: observable
 });
 
-export { VIEWS };
 export default UiStore;

@@ -4,13 +4,14 @@ import DataStore from "./DataStore";
 
 test("Create a UiStore", () => {
   const uiStore = new UiStore();
-  expect(uiStore.currentPost).toBeUndefined();
+  expect(uiStore.currentUser).toBeUndefined();
 });
 
 
-test("Set current post", () => {
+test("Set user post", () => {
   const uiStore = new UiStore();
-  const user = new User({ name: "testuser" });
-  uiStore.setCurrentPost(user);
-  expect(uiStore.setCurrentPost).toBe(user);
+  const dataStore =  new DataStore();
+  const user = new User({ name: "testuser", store: dataStore });
+  uiStore.setCurrentUser(user);
+  expect(uiStore.currentUser).toBe(user);
 });

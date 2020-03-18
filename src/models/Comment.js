@@ -21,8 +21,6 @@ class Comment {
     this.id = id;
     this.user = user;
 
-    console.log(user)
-
     this.picture.linkComment(this);
     this.user.linkComment(this);
   }

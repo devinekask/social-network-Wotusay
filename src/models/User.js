@@ -9,7 +9,7 @@ class User {
     this.id = id;
 
     if (!store) {
-      return new Error ('voorzie een store');
+      throw new Error("voorzie een store");
     }
     this.store.linkUser(this);
   }

@@ -5,8 +5,8 @@ import Comment from '../models/Comment';
 
 test('A new store', () => {
   const b = new DataStore();
+  expect(b.pictures).toBeInstanceOf(Array);
   expect(b.pictures.length).toBe(0);
-  expect(b.pictures.length).toBeInstanceOf(Array);
 });
 
 function getSeedData(store) {
@@ -24,12 +24,12 @@ function getSeedData(store) {
 test('testing the seed data', () => {
   const store = new DataStore();
   getSeedData(store);
-  expect(store.pictures.length).toBe(2);
+  expect(store.pictures.length).toBe(1);
 });
 
 test('get a picture id', () => {
   const store = new DataStore();
   const picture =  new Picture({pic: "asd", store});
   const id = picture.id;
-  expect(store.getPictureById(id).toBe(picture));
+  expect(store.getPictureById(id)).toBe(picture);
 });

@@ -36,3 +36,29 @@ test("User must have a reference to a created comment", () => {
   expect(comment.user).toBe(user);
   expect(comment.user.comments).toContain(comment);
 });
+
+
+test('Liking the comment', () => {
+  const user = new User({ name: "testuser", store: new DataStore()});
+  const picture = new Picture({ name: "testpic", store: new DataStore()});
+  const c = new Comment(({content: 'test', user, picture}));
+  expect(c.likes).toBe(0);
+  expect(c.liked).toBe(false);
+  c.setCommentLiked();
+  expect(c.likes).toBe(1);
+  expect(c.liked).toBe(true);
+});
+
+test('Liking and unliking the comment', () => {
+  const user = new User({ name: "testuser", store: new DataStore()});
+  const picture = new Picture({ name: "testpic", store: new DataStore()});
+  const c = new Comment(({content: 'test', user, picture}));
+  expect(c.likes).toBe(0);
+  expect(c.liked).toBe(false);
+  c.setCommentLiked();
+  expect(c.likes).toBe(1);
+  expect(c.liked).toBe(true);
+  c.setCommentUnLike();
+  expect(c.likes).toBe(0);
+  expect(c.liked).toBe(false);
+});
