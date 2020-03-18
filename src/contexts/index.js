@@ -12,14 +12,14 @@ const u1 = new User("DadGamer1995")
 const u2 = new User("Gamerboy2000");
 const u3 = new User("BigBaldGamer");
 
-const p1 = new Picture({pic:'./assets/img/foto.png'});
+const p1 = new Picture({pic:'./assets/img/foto.png' , store: stores.dataStore});
 p1.comments = [
   new Comment ({content:'Mijn nieuwe aankoop!', picture:p1 , user: u2}),
   new Comment ({content:'Wat een zot ding !', picture:p1, user:u3})
 ];
 
 
-const p2 = new Picture({pic:'./assets/img/switch.jpg', pictureLikes: 10, });
+const p2 = new Picture({pic:'./assets/img/switch.jpg', pictureLikes: 10, store: stores.dataStore });
 p2.comments = [
   new Comment ({content:'Mijn doosje voor mijn oortjes!', picture:p2 , user: u1}),
   new Comment ({content:'Waar kan ik die krijgen?', picture:p2, user:u2, likes: 10})

@@ -1,46 +1,35 @@
-import Store from './Store';
+import DataStore from './DataStore';
+import User from '../models/User';
+import Picture from '../models/Picture';
+import Comment from '../models/Comment';
 
 test('A new store', () => {
-  const b = new Store();
-  expect(b.comments.length).toBe(0);
+  const b = new DataStore();
+  expect(b.pictures.length).toBe(0);
+  expect(b.pictures.length).toBeInstanceOf(Array);
 });
 
+function getSeedData(store) {
+  const user = new User({name: 'test123', store: store});
+  const picture = new Picture({pic:'test', store: store});
+  new Comment({
+    content: "content1",
+    user,
+    picture,
+  })
 
-test('Add comment to Store', () => {
-  const b = new Store();
+  return picture
+}
 
-  expect(b.comments.length).toBe(0);
-  b.addResponse(new Comment({content: 'testing'}));
-  expect(b.comments.length).toBe(1);
+test('testing the seed data', () => {
+  const store = new DataStore();
+  getSeedData(store);
+  expect(store.pictures.length).toBe(2);
 });
 
-
-test('Adding likes to the picture', () => {
-  const b = new Store();
-  expect(b.pictureLikes).toBe(200);
-  expect(b.pictureLiked).toBe(false);
-  b.setLiked();
-  expect(b.pictureLikes).toBe(201);
-  expect(b.pictureLiked).toBe(true);
-});
-
-
-test('Liking and unliking the picture', () => {
-  const b = new Store();
-  expect(b.pictureLikes).toBe(200);
-  expect(b.pictureLiked).toBe(false);
-  b.setLiked();
-  expect(b.pictureLikes).toBe(201);
-  expect(b.pictureLiked).toBe(true);
-  b.setUnLike();
-  expect(b.pictureLikes).toBe(200);
-  expect(b.pictureLiked).toBe(false);
-});
-
-
-test('Seeding the store', () => {
-  const b = new Store();
-  expect(b.comments.length).toBe(0);
-  b.seed([new Comment({content: 'Dit is mijn nieuwe console!', user: 'RetroGamer1996', likes: 0, picture: 'gameboy', liked: false})]);
-  expect(b.comments.length).toBe(1);
+test('get a picture id', () => {
+  const store = new DataStore();
+  const picture =  new Picture({pic: "asd", store});
+  const id = picture.id;
+  expect(store.getPictureById(id).toBe(picture));
 });

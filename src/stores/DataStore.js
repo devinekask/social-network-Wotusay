@@ -5,40 +5,31 @@ class Store {
 
   constructor() {
     this.pictures = [];
-    this.currentPicture = undefined;
-    this.currentUser= undefined;
-    this.posts = [];
+    this.users = [];
   }
 
   seed(pictures) {
     this.pictures = pictures;
   }
 
-  profilePost() {
-    this.posts = this.pictures[1] ;
+  linkPicture(picture) {
+    !this.pictures.includes(picture) && this.pictures.push(picture);
   }
 
-
-
-  setCurrentUser(user) {
-    this.currentUser = user;
+  linkUser(user) {
+    !this.users.includes(user) && this.users.push(user);
   }
 
-  setCurrentPicture(pic) {
-    this.currentPicture = pic;
-  }
+  getPictureById = id => this.pictures.find(picture => picture.id === id);
 }
 
 decorate(Store, {
+  users: observable,
   pictures: observable,
   addResponse: action,
   seed: action,
-  posts:observable,
-  profilePost:action,
-  setCurrentPicture:action,
-  setCurrentUser:action,
-  currentPicture:observable,
-  currentUser:observable,
+  linkPicture: action,
+  linkUser:action
 });
 
 export default Store;
