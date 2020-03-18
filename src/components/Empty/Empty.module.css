@@ -1,0 +1,13 @@
+.title {
+  color: white;
+  font-size: 3rem;
+  margin-top: 5rem;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  overflow: hidden;
+  margin-bottom: 90rem;
+}

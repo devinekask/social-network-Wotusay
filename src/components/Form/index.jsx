@@ -6,18 +6,18 @@ import { useStores } from "../../hooks";
 
 const Form = () => {
 
-  const {dataStore} =  useStores();
+  const {uiStore} =  useStores();
   const [content, setContent] = useState("");
 
   const submitHandelerEvent = e => {
 
 
     e.preventDefault();
-    if (content !== "" && dataStore.currentPicture) {
+    if (content !== "" && uiStore.currentPicture) {
       new Comment({
         content,
-        user: dataStore.currentUser,
-        picture: dataStore.currentPicture
+        user: uiStore.currentUser,
+        picture: uiStore.currentPicture
       })
       setContent("");
     }

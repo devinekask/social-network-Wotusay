@@ -7,22 +7,18 @@ import { useObserver } from "mobx-react-lite";
 import PropTypes from "prop-types";
 import Header from '../Header';
 import { useStores } from "../../hooks";
-import { VIEWS } from '../../stores/UiStore';
 import { Link } from 'react-router-dom';
+import { ROUTES } from '../consts';
 
 const Picture = ({ picture }) => {
 
-  const {dataStore, uiStore} = useStores();
+  const {uiStore} = useStores();
   return useObserver(() => (
     <>
-    <div onMouseEnter={() => dataStore.setCurrentPicture(picture)}>
+    <div onMouseEnter={() => uiStore.setCurrentPicture(picture)}>
     <Header user={picture.comments[0].user.name} />
 
-    <Link  onClick={() => {
-       uiStore.setCurrentPost(picture);
-       uiStore.setCurrentView(VIEWS.detail);
-
-     }} to={`detail/${picture.id}`}>
+    <Link to={ROUTES.detail.to + picture.id}>
     <img width="590" height="499" className={styles.button} src={picture.pic} alt='gameboy'/>
     </Link>
      <section className={styles.form}>

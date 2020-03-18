@@ -7,13 +7,24 @@ import Comment from '../Comment';
 import Form from '../Form';
 import { useObserver } from 'mobx-react-lite';
 import Back from '../Back';
+import { useParams } from 'react-router-dom';
+import Empty from '../Empty';
 
 
 const Detail = () => {
 
-  const {uiStore} = useStores();
-  const post = uiStore.currentPost;
-  return useObserver (() => (
+  const {id} = useParams();
+  const { dataStore } = useStores();
+  const post = dataStore.getPictureById(id);
+
+  console.log(post);
+
+  return useObserver (() => {
+
+    if (!post) {
+      return <Empty message= {'Post not found'}/>
+    }
+    return(
     <>
 
       <Back></Back>
@@ -37,6 +48,6 @@ const Detail = () => {
       </div>
     </div>
     </>
-  ))
+    )})
 }
 export default Detail;
