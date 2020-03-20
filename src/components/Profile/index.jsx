@@ -12,9 +12,6 @@ const Profile = () => {
 
   const user =  uiStore.currentUser.id;
   const post = dataStore.getUserPics(user);
- post.forEach(picture => {
-    console.log(picture.comments[0].use)
-  });
 
   return useObserver(() => (
     post.map(
@@ -22,7 +19,7 @@ const Profile = () => {
       picture.comments[0].user.id === user ?       <>
       <div className={styles.strech}>
   <Header user={uiStore.currentUser.name} />
-  <img src={picture.pic} alt={picture.pic} />
+  <img width="560" height="499" src={picture.pic} alt={picture.pic} />
   <div className={styles.form}>
   <Likes picture={picture} />
  <span className={styles.amount}> {picture.amountComments} {picture.amountComments === 1 ? 'Comment' : 'Comments'}</span>

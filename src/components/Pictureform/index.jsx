@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { useStores } from "../../hooks";
 import Picture from "../../models/Picture";
 import Comment from '../../models/Comment';
+import { useHistory } from "react-router-dom";
+
 
 
 const Pictureform = () => {
@@ -11,18 +13,8 @@ const Pictureform = () => {
   const [state, setFile] = useState(null);
   const {dataStore,uiStore} = useStores();
   const [content, setContent] = useState("");
-
-
-
-  console.log(state)
- /* const handleChange = e => {
-    setFile({
-      file: URL.createObjectURL(e.target.file)
-    })
-
-    console.log(setFile.file)
-  }
-*/
+  const home = useHistory();
+  
 const handleSubmit = e  => {
   e.preventDefault();
   if (state !== null && uiStore.currentUser && content !== "") {
@@ -40,26 +32,35 @@ const handleSubmit = e  => {
       })
     ]
 
+    home.goBack();
 
   }
 
 }
 
 const loadPic = e => {
-  setFile({
-    file: URL.createObjectURL(e.target.files[0])
+  if (e.target.files[0] !== undefined){
+      setFile({
+   file: URL.createObjectURL(e.target.files[0])
   });
+  }
+
 };
 
 
   return useObserver(() => (
-    <form onSubmit={e => handleSubmit(e)} >
+    <form className={styles.gridform} onSubmit={e => handleSubmit(e)} >
 
-    {state === null ? true : <img src={state.file} alt="" srcset=''/>
+    {state === null ? <p className={styles.emptystate}>Voorbeeld foto ziet u hier!</p> : <img className={styles.img} width="590" height="499" src={state.file} alt="yourpic" />
  }
-      <input required type="text" onChange={e => setContent(e.currentTarget.value)} id='content' />
-      <input onChange={e => loadPic(e)} required type="file" accept="image/*"/>
-      <input type="submit" />
+
+ <div className={styles.background}>
+      <label className={styles.desc} htmlFor="content"> Voeg een beschrijving toe</label>
+      <input className={styles.text} required type="text" placeholder="Kijk naar mijn nieuwe foto!" onChange={e => setContent(e.currentTarget.value)} id='content' />
+      <input className={styles.input} onInput={e => loadPic(e)} required type="file" accept="image/*"/>
+      <input className={styles.submit} value="Plaatsen" type="submit" />
+ </div>
+
     </form>
   ))
 }

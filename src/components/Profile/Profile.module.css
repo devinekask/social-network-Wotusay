@@ -4,6 +4,7 @@
 
 .form {
   composes: form from "../../style/form.module.css";
+
 }
 
 .amount {
