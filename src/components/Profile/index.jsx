@@ -1,23 +1,43 @@
 import React from 'react';
 import styles from './Profile.module.css';
-
+import Likes from '../Likes';
+import Comment from '../Comment';
+import Form from '../Form';
 import { useObserver } from 'mobx-react-lite';
 import Header from '../Header';
 import { useStores } from '../../hooks';
 
 const Profile = () => {
-  const {dataStore} = useStores();
-  console.log(dataStore.posts)
-  console.log(dataStore.currentUser.name)
+  const {dataStore,uiStore} = useStores();
+
+  const user =  uiStore.currentUser.id;
+  const post = dataStore.getUserPics(user);
+ post.forEach(picture => {
+    console.log(picture.comments[0].use)
+  });
+
   return useObserver(() => (
-    <>
-    <div className={styles.strech}>
-    <Header user={dataStore.currentUser.name} />
-      <ul>
-        <img alt={dataStore.posts.pic} src={dataStore.posts.pic}/>
-      </ul></div>
-    </>
-   ) )
+    post.map(
+      picture =>
+      picture.comments[0].user.id === user ?       <>
+      <div className={styles.strech}>
+  <Header user={uiStore.currentUser.name} />
+  <img src={picture.pic} alt={picture.pic} />
+  <div className={styles.form}>
+  <Likes picture={picture} />
+ <span className={styles.amount}> {picture.amountComments} {picture.amountComments === 1 ? 'Comment' : 'Comments'}</span>
+ <ul className={styles.comments__padding}>
+  {picture.comments.map(comment => (
+    <Comment comment={comment} key={comment.key} />
+  ))}
+ </ul>
+ <div className={styles.input}>
+ <Form /></div></div>
+ </div>
+  </>
+  :
+    false
+   ) ))
 }
 
 export default Profile;

@@ -11,6 +11,7 @@ class User {
     if (!store) {
       throw new Error("voorzie een store");
     }
+    this.pictures.forEach(picture => picture.linkPicture(this))
     this.store.linkUser(this);
   }
 

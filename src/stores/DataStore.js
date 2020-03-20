@@ -21,6 +21,10 @@ class Store {
   }
 
   getPictureById = id => this.pictures.find(picture => picture.id === id);
+
+  getUserPics = use =>
+    this.pictures.filter(picture =>
+      picture.comments.find(comment =>  comment.user.id === use))
 }
 
 decorate(Store, {

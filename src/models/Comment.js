@@ -20,9 +20,8 @@ class Comment {
     this.liked = liked;
     this.id = id;
     this.user = user;
-
-    this.picture.linkComment(this);
     this.user.linkComment(this);
+    this.picture.linkComment(this);
   }
 
   //For the liked comment

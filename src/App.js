@@ -11,11 +11,12 @@ import Discover from './components/Discover';
 import DiscoverDetails from './components/DiscoverDetails';
 import Profile from './components/Profile';
 import { ROUTES } from './components/consts/index';
+import Pictureform from './components/Pictureform';
 
 
 function App() {
 
-  const {dataStore} = useStores()
+  const {uiStore} = useStores()
 
   return useObserver( () => (
      <>
@@ -37,7 +38,11 @@ function App() {
             </Route>
 
             <Route path={ROUTES.profile}>
-              {dataStore.currentUser === undefined ? <Redirect to={ROUTES.home} /> : <Profile /> }
+              {uiStore.currentUser === undefined ? <Redirect to={ROUTES.home} /> : <Profile /> }
+            </Route>
+
+            <Route path={ROUTES.addpicture}>
+            {uiStore.currentUser === undefined ? <Redirect to={ROUTES.home} /> : <Pictureform /> }
             </Route>
         </Switch>
     </section>
