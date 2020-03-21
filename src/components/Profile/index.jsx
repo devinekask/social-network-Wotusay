@@ -16,8 +16,8 @@ const Profile = () => {
   return useObserver(() => (
     post.map(
       picture =>
-      picture.comments[0].user.id === user ?       <>
-      <div className={styles.strech}>
+      picture.comments[0].user.id === user ?
+      <div key={picture.id} className={styles.strech}>
   <Header user={uiStore.currentUser.name} />
   <img width="560" height="499" src={picture.pic} alt={picture.pic} />
   <div className={styles.form}>
@@ -25,13 +25,13 @@ const Profile = () => {
  <span className={styles.amount}> {picture.amountComments} {picture.amountComments === 1 ? 'Comment' : 'Comments'}</span>
  <ul className={styles.comments__padding}>
   {picture.comments.map(comment => (
-    <Comment comment={comment} key={comment.key} />
+    <Comment comment={comment} key={comment.id} />
   ))}
  </ul>
  <div className={styles.input}>
  <Form /></div></div>
  </div>
-  </>
+
   :
     false
    ) ))

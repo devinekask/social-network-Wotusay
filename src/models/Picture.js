@@ -2,7 +2,7 @@ import { decorate, observable, action, computed } from "mobx";
 import {v4} from "uuid";
 
 class Picture {
-  constructor({pic, comments= [], users = [], pictureLikes= 200 , pictureLiked = false, store , id = v4()}) {
+  constructor({pic, comments= [], users = [], pictureLikes= 200 , pictureLiked = false, store , id = v4(), key = v4()}) {
     this.pic =  pic;
     this.comments = comments;
     this.users = users;
@@ -12,6 +12,7 @@ class Picture {
     this.pictureLikes = pictureLikes;
     this.store.linkPicture(this);
     this.users.forEach(user => user.linkPicture(this));
+    this.key = key;
   }
 
   linkComment(comment) {

@@ -26,7 +26,7 @@ const Picture = ({ picture }) => {
      <span className={styles.amount}> {picture.amountComments} {picture.amountComments === 1 ? 'Comment' : 'Comments'}</span>
      <ul className={styles.comments__padding}>
       {picture.comments.map(comment => (
-        <Comment comment={comment} key={comment.key} />
+        <Comment comment={comment} key={comment.id} />
       ))}
      </ul>
      <Form picture={picture}  />

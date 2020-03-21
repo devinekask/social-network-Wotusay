@@ -40,7 +40,7 @@ const Detail = () => {
      <span className={styles.amount}> {post.amountComments} {post.amountComments === 1 ? 'Comment' : 'Comments'}</span>
      <ul className={styles.comments__padding}>
       {post.comments.map(comment => (
-        <Comment comment={comment} key={comment.key} />
+        <Comment comment={comment} key={comment.id} />
       ))}
      </ul>
      <div className={styles.input}>
