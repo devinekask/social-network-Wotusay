@@ -32,7 +32,7 @@ const Detail = () => {
     <div className={styles.grid__templ}>
       <div>
         <Header user={post.comments[0].user.name} />
-        <img width="590" height="499" src={'.'+post.pic} alt={post.name}/>
+        <img width="590" height="499" src={post.pic} alt={post.name}/>
       </div>
 
       <div className={styles.form}>
