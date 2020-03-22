@@ -27,9 +27,34 @@ test('testing the seed data', () => {
   expect(store.pictures.length).toBe(1);
 });
 
+test('testing the seed', () => {
+  const store = new DataStore();
+  const user =  new User({name: 'test', store})
+  const picture =  new Picture({pic: "asd", store});
+  picture.comments = [
+    new Comment ({content:'test', picture, user:user})
+  ]
+
+  store.seed(picture);
+  expect(store.pictures).toBe(picture);
+
+})
+
 test('get a picture id', () => {
   const store = new DataStore();
   const picture =  new Picture({pic: "asd", store});
   const id = picture.id;
   expect(store.getPictureById(id)).toBe(picture);
 });
+
+
+test('get a userpic', () => {
+  const store = new DataStore();
+  const user =  new User({name: 'test', store})
+  const picture =  new Picture({pic: "asd", store});
+  picture.comments = [
+    new Comment ({content:'test', picture, user:user})
+  ]
+  store.getUserPics(user.id);
+  expect(store.pictures.length).toBe(1);
+})

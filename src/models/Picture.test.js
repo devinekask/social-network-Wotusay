@@ -71,5 +71,18 @@ test("Amount of comments", () => {
   });
   picture.linkComment(comment2);
   expect(picture.amountComments).toBe(2);
+})
+
+
+test('liking the pic', () => {
+  const picture = new Picture({ name: "testgroup", store: new DataStore() });
+  expect(picture.pictureLiked).toBe(false);
+  expect(picture.pictureLikes).toBe(200);
+  picture.setLiked();
+  expect(picture.pictureLiked).toBe(true);
+  expect(picture.pictureLikes).toBe(201);
+  picture.setUnLike();
+  expect(picture.pictureLiked).toBe(false);
+  expect(picture.pictureLikes).toBe(200);
 
 })

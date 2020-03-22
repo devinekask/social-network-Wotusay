@@ -6,6 +6,8 @@ class Store {
   constructor() {
     this.pictures = [];
     this.users = [];
+    this.users.forEach(user =>
+      user.linkStore(this));
   }
 
   seed(pictures) {

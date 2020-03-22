@@ -8,6 +8,10 @@ class User {
     this.store = store;
     this.id = id;
 
+
+    if (!name) {
+      throw new Error ("voorzie een name")
+    }
     if (!store) {
       throw new Error("voorzie een store");
     }
@@ -26,9 +30,6 @@ class User {
   }
 
 
-  linkStore(store) {
-    !this.store.includes(store) && this.store.push(store);
-  }
 }
 
 export default User;

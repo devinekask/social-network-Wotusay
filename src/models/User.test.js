@@ -13,6 +13,11 @@ test("Can't create a user without a store", () => {
   expect(() => new User({ name: "testuser" })).toThrow("voorzie een store");
 });
 
+
+test('cant creat a user without a name', () => {
+  expect(() => new User({ store: new DataStore() })).toThrow("voorzie een name");
+});
+
 test("DataStore must have a reference to a created user", () => {
   const dataStore = new DataStore();
   expect(dataStore.users.length).toBe(0);
@@ -21,7 +26,7 @@ test("DataStore must have a reference to a created user", () => {
   expect(dataStore.users[0]).toStrictEqual(user);
 });
 
-test("Link a group to a user", () => {
+test("Link a picture to a user", () => {
   const user = new User({ name: "testuser", store: new DataStore() });
   const picture = new Picture({ pic: "testgroup", store: new DataStore() });
   expect(user.pictures).toStrictEqual([]);
@@ -37,3 +42,5 @@ test("Link a comment to a user", () => {
   const comment = new Comment({ content: "testgroup", user, picture });
   expect(user.comments).toContain(comment);
 });
+
+
